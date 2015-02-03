@@ -9,5 +9,5 @@ import scrapy
 
 
 class SimpledesktopsItem(scrapy.Item):
-    referer = scrapy.Field()
-    url = scrapy.Field()
+    images = scrapy.Field()
+    image_urls = scrapy.Field()

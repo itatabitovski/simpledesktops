@@ -8,7 +8,6 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 import os
-print os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 BOT_NAME = 'simpledesktops'
 
@@ -22,5 +21,12 @@ CONCURRENT_REQUESTS = 1
 DOWNLOAD_DELAY = 0.50
 
 ITEM_PIPELINES = {
-    'simpledesktops.pipelines.SimpledesktopsPipeline',
+        'scrapy.contrib.pipeline.images.ImagesPipeline': 1
 }
+
+IMAGES_STORE = os.getenv('SCRAPY_IMAGES_STORE', '../wallpapers')
+
+if not os.path.exists(IMAGES_STORE):
+        os.makedirs(IMAGES_STORE)
+
+

@@ -18,6 +18,5 @@ class WallpapersSpider(CrawlSpider):
 
     def parse_item(self, response):
         i = SimpledesktopsItem()
-        i['referer'] = response.request.headers.get('Referer', None)
-        i['url'] = 'http://{0}/{1}'.format(self.name, response.xpath('//div[@class="desktop"]/a/@href').extract()[0])
+        i['image_urls'] = ['http://{0}/{1}'.format(self.allowed_domains[0], response.xpath('//div[@class="desktop"]/a/@href').extract()[0])]
         return i
